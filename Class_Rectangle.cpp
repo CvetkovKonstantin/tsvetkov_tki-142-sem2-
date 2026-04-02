@@ -11,7 +11,7 @@ void Rectangle::CheckRectangle(const double x1, const double y1, const double x2
 
 	if (abs((d1 + d2 + d3) - 2 * pow(diagonal, 2)) > 1e-9)
 	{
-		cerr << "Òî÷êè íå îáðàçóþò ïðÿìîóãîëüíèê!" << endl;
+		cerr << "Ð¢Ð¾Ñ‡ÐºÐ¸ Ð½Ðµ Ð¾Ð±Ñ€Ð°Ð·ÑƒÑŽÑ‚ Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº!" << endl;
 		exit(1);
 	}
 
