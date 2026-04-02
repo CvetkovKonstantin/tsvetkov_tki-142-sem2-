@@ -5,52 +5,52 @@
 using namespace std;
 
 /**
-* @brief Класс прямоугольника
+* @brief РљР»Р°СЃСЃ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 */
 class Rectangle
 {
 private:
 	/**
-	* @param side_one - длина первой стороны
+	* @param side_one - РґР»РёРЅР° РїРµСЂРІРѕР№ СЃС‚РѕСЂРѕРЅС‹
 	*/
 	double side_one;
 
 	/**
-	* @param side_two - длина второй стороны
+	* @param side_two - РґР»РёРЅР° РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹
 	*/
 	double side_two;
 
 	/**
-	* @param diagonal - длина диагонали
+	* @param diagonal - РґР»РёРЅР° РґРёР°РіРѕРЅР°Р»Рё
 	*/
 	double diagonal;
 
 	/**
-	* @brief Проверка, образуют ли 3 точки прямоугольный угол
+	* @brief РџСЂРѕРІРµСЂРєР°, РѕР±СЂР°Р·СѓСЋС‚ Р»Рё 3 С‚РѕС‡РєРё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№ СѓРіРѕР»
 	*/
 	void CheckRectangle(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
 
 public:
 
 	/**
-	* @brief Конструктор по-умолчанию
+	* @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ
 	*/
 	Rectangle();
 
 	/**
-	* @brief Конструктор по координатам трех точек
+	* @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј С‚СЂРµС… С‚РѕС‡РµРє
 	*/
 	Rectangle(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
 
 	/**
-	* @brief Рассчитывает радиус описанной окружности
-	* @return Радиус
+	* @brief Р Р°СЃСЃС‡РёС‚С‹РІР°РµС‚ СЂР°РґРёСѓСЃ РѕРїРёСЃР°РЅРЅРѕР№ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
+	* @return Р Р°РґРёСѓСЃ
 	*/
 	double RadiusCircle() const;
 
 	/**
-	* @brief Рассчитывает площадь прямоугольника
-	* @return Площадь
+	* @brief Р Р°СЃСЃС‡РёС‚С‹РІР°РµС‚ РїР»РѕС‰Р°РґСЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+	* @return РџР»РѕС‰Р°РґСЊ
 	*/
 	double Area() const;
 };
