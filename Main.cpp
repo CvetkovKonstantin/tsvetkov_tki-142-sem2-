@@ -1,36 +1,41 @@
 #include "Class_Rectangle.h"
 
 /**
-* @brief Считывает значение координаты с клавиатуры
-* @return Значение координаты
+* @brief Считывает значение введённое с клавиатуры
+* @return Значение введённое с клавиатуры, если оно считано правильно
 */
-const double GetCoord(void);
+const double GetValue(void);
 
 /**
 * @brief Точка входа в программу
-* @return Возвращает 0 при корректном завершении
+* @return Возвращает 0, если программа выполнена корректно
 */
 int main(void)
 {
 	system("chcp 1251");
 	system("CLS");
 
-	cout << "Введите x1, y1: ";
-	const double x1 = GetCoord(); const double y1 = GetCoord();
-	cout << "Введите x2, y2: ";
-	const double x2 = GetCoord(); const double y2 = GetCoord();
-	cout << "Введите x3, y3: ";
-	const double x3 = GetCoord(); const double y3 = GetCoord();
+	cout << "Введите координаты 1-й точки (x1, y1): " << endl;
+	const double x1 = GetValue();
+	const double y1 = GetValue();
 
-	Rectangle A(x1, y1, x2, y2, x3, y3);
+	cout << "Введите координаты 2-й точки (x2, y2): " << endl;
+	const double x2 = GetValue();
+	const double y2 = GetValue();
 
-	cout << "Площадь: " << A.Area() << endl;
-	cout << "Радиус описанной окружности: " << A.RadiusCircle() << endl;
+	cout << "Введите координаты 3-й точки (x3, y3): " << endl;
+	const double x3 = GetValue();
+	const double y3 = GetValue();
+
+	Rectangle Rec(x1, y1, x2, y2, x3, y3);
+
+	cout << "Площадь прямоугольника: " << Rec.Area() << endl;
+	cout << "Радиус описанной окружности: " << Rec.RadiusCircle() << endl;
 
 	return 0;
 }
 
-const double GetCoord(void)
+const double GetValue(void)
 {
 	double number = 0;
 	cin >> number;
