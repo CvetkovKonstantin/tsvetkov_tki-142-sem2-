@@ -5,52 +5,53 @@
 using namespace std;
 
 /**
-* @brief Класс прямоугольника
+* @brief Класс прямоугольника по трем точкам
 */
 class Rectangle
 {
 private:
 	/**
-	* @param side_one - длина первой стороны
+	* @param x1, y1 - координаты первой точки
 	*/
-	double side_one;
+	double x1, y1;
 
 	/**
-	* @param side_two - длина второй стороны
+	* @param x2, y2 - координаты второй точки
 	*/
-	double side_two;
+	double x2, y2;
 
 	/**
-	* @param diagonal - длина диагонали
+	* @param x3, y3 - координаты третьей точки
 	*/
-	double diagonal;
+	double x3, y3;
 
 	/**
-	* @brief Проверка, образуют ли 3 точки прямоугольный угол
+	* @brief Функция проверки возможности существования прямоугольника
+	* @param x1, y1, x2, y2, x3, y3 - координаты точек
 	*/
-	void CheckRectangle(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
+	void CheckRectangle(double x1, double y1, double x2, double y2, double x3, double y3);
 
 public:
 
 	/**
-	* @brief Конструктор по-умолчанию
+	* @brief Конструктор по-умолчанию, задает прямоугольник со сторонами 3 и 4
 	*/
 	Rectangle();
 
 	/**
-	* @brief Конструктор по координатам трех точек
+	* @brief Конструктор, задаёт координаты точек пользователя
 	*/
-	Rectangle(const double x1, const double y1, const double x2, const double y2, const double x3, const double y3);
-
-	/**
-	* @brief Рассчитывает радиус описанной окружности
-	* @return Радиус
-	*/
-	double RadiusCircle() const;
+	Rectangle(double x1, double y1, double x2, double y2, double x3, double y3);
 
 	/**
 	* @brief Рассчитывает площадь прямоугольника
-	* @return Площадь
+	* @return Площадь прямоугольника
 	*/
 	double Area() const;
+
+	/**
+	* @brief Рассчитывает радиус описанной окружности
+	* @return Радиус описанной окружности
+	*/
+	double RadiusCircle() const;
 };
