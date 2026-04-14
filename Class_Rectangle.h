@@ -1,8 +1,5 @@
 #pragma once
-#include <string>
-#include <iostream>
-
-using namespace std;
+#include "Class_Point.h"
 
 /**
 * @brief Класс прямоугольника по трем точкам
@@ -11,37 +8,37 @@ class Rectangle
 {
 private:
 	/**
-	* @param x1, y1 - координаты первой точки
+	* @param p1, p2, p3 - точки прямоугольника
 	*/
-	double x1, y1;
+	Point p1, p2, p3;
 
 	/**
-	* @param x2, y2 - координаты второй точки
+	* @brief Константа для безопасного сравнения вещественных чисел 
 	*/
-	double x2, y2;
+	const double EPS = 1e-7;
 
 	/**
-	* @param x3, y3 - координаты третьей точки
+	* @brief Вспомогательная функция для получения квадратов сторон 
+	* @param s - массив для записи результатов
 	*/
-	double x3, y3;
+	void GetSideSquares(double s[3]) const;
 
 	/**
 	* @brief Функция проверки возможности существования прямоугольника
-	* @param x1, y1, x2, y2, x3, y3 - координаты точек
 	*/
-	void CheckRectangle(double x1, double y1, double x2, double y2, double x3, double y3);
+	void CheckRectangle() const;
 
 public:
 
 	/**
-	* @brief Конструктор по-умолчанию, задает прямоугольник со сторонами 3 и 4
+	* @brief Конструктор по-умолчанию
 	*/
 	Rectangle();
 
 	/**
-	* @brief Конструктор, задаёт координаты точек пользователя
+	* @brief Конструктор с параметрами 
 	*/
-	Rectangle(double x1, double y1, double x2, double y2, double x3, double y3);
+	Rectangle(const Point p1, const Point p2, const Point p3);
 
 	/**
 	* @brief Рассчитывает площадь прямоугольника
