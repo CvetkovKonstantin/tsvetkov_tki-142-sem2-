@@ -1,33 +1,28 @@
 #include "Class_Rectangle.h"
+#include <iostream>
+
+using namespace std;
 
 /**
-* @brief Считывает значение введённое с клавиатуры
-* @return Значение введённое с клавиатуры, если оно считано правильно
+* @brief Считывает вещественное число
 */
-const double GetValue(void);
+const double GetValue();
 
 /**
-* @brief Точка входа в программу
-* @return Возвращает 0, если программа выполнена корректно
+* @brief Считывает данные для точки 
 */
+const Point GetPoint(int number);
+
 int main(void)
 {
 	system("chcp 1251");
 	system("CLS");
 
-	cout << "Введите координаты 1-й точки (x1, y1): " << endl;
-	const double x1 = GetValue();
-	const double y1 = GetValue();
+	const Point p1 = GetPoint(1);
+	const Point p2 = GetPoint(2);
+	const Point p3 = GetPoint(3);
 
-	cout << "Введите координаты 2-й точки (x2, y2): " << endl;
-	const double x2 = GetValue();
-	const double y2 = GetValue();
-
-	cout << "Введите координаты 3-й точки (x3, y3): " << endl;
-	const double x3 = GetValue();
-	const double y3 = GetValue();
-
-	Rectangle Rec(x1, y1, x2, y2, x3, y3);
+	Rectangle Rec(p1, p2, p3);
 
 	cout << "Площадь прямоугольника: " << Rec.Area() << endl;
 	cout << "Радиус описанной окружности: " << Rec.RadiusCircle() << endl;
@@ -35,7 +30,15 @@ int main(void)
 	return 0;
 }
 
-const double GetValue(void)
+const Point GetPoint(int number)
+{
+	cout << "Введите координаты " << number << "-й точки (x, y): " << endl;
+	const double x = GetValue();
+	const double y = GetValue();
+	return Point(x, y); 
+}
+
+const double GetValue()
 {
 	double number = 0;
 	cin >> number;
