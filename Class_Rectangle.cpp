@@ -1,64 +1,63 @@
 #include "Class_Rectangle.h"
 #include <iostream>
 #include <math.h>
-#include <algorithm>
+#include <algorithm> 
 
 using namespace std;
 
-void Rectangle::GetSideSquares(double s[3]) const
-{
-	s[0] = pow(p2.GetX() - p1.GetX(), 2) + pow(p2.GetY() - p1.GetY(), 2);
-	s[1] = pow(p3.GetX() - p2.GetX(), 2) + pow(p3.GetY() - p2.GetY(), 2);
-	s[2] = pow(p3.GetX() - p1.GetX(), 2) + pow(p3.GetY() - p1.GetY(), 2);
-}
+const double Rectangle::EPS = 1e-7;
 
-void Rectangle::CheckRectangle() const
+void Rectangle::Init()
 {
-	double s[3];
-	GetSideSquares(s);
+	double d1 = pow(p2.GetX() - p1.GetX(), 2) + pow(p2.GetY() - p1.GetY(), 2);
+	double d2 = pow(p3.GetX() - p2.GetX(), 2) + pow(p3.GetY() - p2.GetY(), 2);
+	double d3 = pow(p3.GetX() - p1.GetX(), 2) + pow(p3.GetY() - p1.GetY(), 2);
 
-	if (s[0] < EPS || s[1] < EPS || s[2] < EPS)
+	if (d1 > d2) swap(d1, d2);
+	if (d2 > d3) swap(d2, d3);
+	if (d1 > d2) swap(d1, d2);
+
+	if (d1 < EPS || d2 < EPS || d3 < EPS)
 	{
-		cerr << "Заданы недопустимые значения, точки совпадают!" << endl;
+		cerr << "Ошибка: точки совпадают!" << endl;
 		exit(1);
 	}
 
-	std::sort(s, s + 3);
-
-	if (fabs((s[0] + s[1]) - s[2]) > EPS)
+	if (fabs((d1 + d2) - d3) > EPS)
 	{
-		cerr << "Заданы недопустимые значения, это не прямоугольник!" << endl;
+		cerr << "Ошибка: это не прямоугольник!" << endl;
 		exit(1);
 	}
+		
+	side1 = sqrt(d1);
+	side2 = sqrt(d2);
+	diagonal = sqrt(d3);
 }
 
 Rectangle::Rectangle()
 {
 	p1 = Point(0, 0);
-	p2 = Point(0, 4);
-	p3 = Point(3, 0);
+	p2 = Point(0, 3);
+	p3 = Point(4, 0);
+	Init();
 }
 
-Rectangle::Rectangle(const Point p1, const Point p2, const Point p3)
+Rectangle::Rectangle(Point t1, Point t2, Point t3)
 {
-	this->p1 = p1;
-	this->p2 = p2;
-	this->p3 = p3;
-	CheckRectangle();
+	p1 = t1;
+	p2 = t2;
+	p3 = t3;
+	Init(); 
 }
 
 double Rectangle::Area() const
 {
-	double s[3];
-	GetSideSquares(s);
-	std::sort(s, s + 3);
-	return sqrt(s[0]) * sqrt(s[1]);
+
+	return side1 * side2;
 }
 
 double Rectangle::RadiusCircle() const
 {
-	double s[3];
-	GetSideSquares(s);
-	std::sort(s, s + 3);
-	return sqrt(s[2]) / 2.0;
+	
+	return diagonal / 2.0;
 }
