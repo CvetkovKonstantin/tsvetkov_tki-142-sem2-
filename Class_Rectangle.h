@@ -51,7 +51,7 @@ public:
 	* @brief Конструктор с параметрами
 	* @param t1, t2, t3 - значения точек, которые передал пользователь
 	*/
-	Rectangle(Point t1, Point t2, Point t3);
+	Rectangle(const Point t1, const Point t2, const Point t3);
 
 	/**
 	* @brief Рассчитывает площадь прямоугольника
