@@ -39,7 +39,7 @@ Rectangle::Rectangle()
 	Init();
 }
 
-Rectangle::Rectangle(Point t1, Point t2, Point t3)
+Rectangle::Rectangle(const Point t1, const Point t2, const Point t3)
 {
 	this->p1 = t1;
 	this->p2 = t2;
