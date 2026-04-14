@@ -1,64 +1,64 @@
 #include "Class_Rectangle.h"
+#include <iostream>
 #include <math.h>
 #include <algorithm>
 
-void Rectangle::CheckRectangle(double x1, double y1, double x2, double y2, double x3, double y3)
-{
-	double d12 = pow(x2 - x1, 2) + pow(y2 - y1, 2);
-	double d23 = pow(x3 - x2, 2) + pow(y3 - y2, 2);
-	double d13 = pow(x3 - x1, 2) + pow(y3 - y1, 2);
+using namespace std;
 
-	if (d12 == 0 || d23 == 0 || d13 == 0)
+void Rectangle::GetSideSquares(double s[3]) const
+{
+	s[0] = pow(p2.GetX() - p1.GetX(), 2) + pow(p2.GetY() - p1.GetY(), 2);
+	s[1] = pow(p3.GetX() - p2.GetX(), 2) + pow(p3.GetY() - p2.GetY(), 2);
+	s[2] = pow(p3.GetX() - p1.GetX(), 2) + pow(p3.GetY() - p1.GetY(), 2);
+}
+
+void Rectangle::CheckRectangle() const
+{
+	double s[3];
+	GetSideSquares(s);
+
+	if (s[0] < EPS || s[1] < EPS || s[2] < EPS)
 	{
 		cerr << "Заданы недопустимые значения, точки совпадают!" << endl;
 		exit(1);
 	}
 
-	double s[3] = { d12, d23, d13 };
 	std::sort(s, s + 3);
 
-	if (fabs((s[0] + s[1]) - s[2]) > 1e-7)
+	if (fabs((s[0] + s[1]) - s[2]) > EPS)
 	{
-		cerr << "Заданы недопустимые значения, точки не образуют прямоугольник!" << endl;
+		cerr << "Заданы недопустимые значения, это не прямоугольник!" << endl;
 		exit(1);
 	}
 }
 
 Rectangle::Rectangle()
 {
-	x1 = 0; y1 = 0;
-	x2 = 0; y2 = 4;
-	x3 = 3; y3 = 0;
+	p1 = Point(0, 0);
+	p2 = Point(0, 4);
+	p3 = Point(3, 0);
 }
 
-Rectangle::Rectangle(double x1, double y1, double x2, double y2, double x3, double y3)
+Rectangle::Rectangle(const Point p1, const Point p2, const Point p3)
 {
-	this->x1 = x1; this->y1 = y1;
-	this->x2 = x2; this->y2 = y2;
-	this->x3 = x3; this->y3 = y3;
-	CheckRectangle(x1, y1, x2, y2, x3, y3);
+	this->p1 = p1;
+	this->p2 = p2;
+	this->p3 = p3;
+	CheckRectangle();
 }
 
 double Rectangle::Area() const
 {
-	double d12 = pow(x2 - x1, 2) + pow(y2 - y1, 2);
-	double d23 = pow(x3 - x2, 2) + pow(y3 - y2, 2);
-	double d13 = pow(x3 - x1, 2) + pow(y3 - y1, 2);
-
-	double s[3] = { d12, d23, d13 };
+	double s[3];
+	GetSideSquares(s);
 	std::sort(s, s + 3);
-
 	return sqrt(s[0]) * sqrt(s[1]);
 }
 
 double Rectangle::RadiusCircle() const
 {
-	double d12 = pow(x2 - x1, 2) + pow(y2 - y1, 2);
-	double d23 = pow(x3 - x2, 2) + pow(y3 - y2, 2);
-	double d13 = pow(x3 - x1, 2) + pow(y3 - y1, 2);
-
-	double s[3] = { d12, d23, d13 };
+	double s[3];
+	GetSideSquares(s);
 	std::sort(s, s + 3);
-
 	return sqrt(s[2]) / 2.0;
 }
