@@ -1,9 +1,6 @@
 #include "Class_Rectangle.h"
-#include <iostream>
 #include <math.h>
-#include <algorithm> 
-
-using namespace std;
+#include <algorithm>
 
 const double Rectangle::EPS = 1e-7;
 
@@ -19,45 +16,43 @@ void Rectangle::Init()
 
 	if (d1 < EPS || d2 < EPS || d3 < EPS)
 	{
-		cerr << "Ошибка: точки совпадают!" << endl;
+		cerr << "Заданы недопустимые значения, точки совпадают!" << endl;
 		exit(1);
 	}
 
 	if (fabs((d1 + d2) - d3) > EPS)
 	{
-		cerr << "Ошибка: это не прямоугольник!" << endl;
+		cerr << "Заданы недопустимые значения, фигура не образует прямоугольник!" << endl;
 		exit(1);
 	}
-		
-	side1 = sqrt(d1);
-	side2 = sqrt(d2);
-	diagonal = sqrt(d3);
+
+	this->side1 = sqrt(d1);
+	this->side2 = sqrt(d2);
+	this->diagonal = sqrt(d3);
 }
 
 Rectangle::Rectangle()
 {
-	p1 = Point(0, 0);
-	p2 = Point(0, 3);
-	p3 = Point(4, 0);
+	this->p1 = Point(0, 0);
+	this->p2 = Point(0, 3);
+	this->p3 = Point(4, 0);
 	Init();
 }
 
 Rectangle::Rectangle(Point t1, Point t2, Point t3)
 {
-	p1 = t1;
-	p2 = t2;
-	p3 = t3;
+	this->p1 = t1;
+	this->p2 = t2;
+	this->p3 = t3;
 	Init(); 
 }
 
 double Rectangle::Area() const
 {
-
 	return side1 * side2;
 }
 
 double Rectangle::RadiusCircle() const
 {
-	
 	return diagonal / 2.0;
 }
