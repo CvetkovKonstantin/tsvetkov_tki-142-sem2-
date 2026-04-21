@@ -95,4 +95,4 @@ std::istream& operator>>(std::istream& is, Person& person) {
     return is;
 }
 
-} // namespace publication
+} 
