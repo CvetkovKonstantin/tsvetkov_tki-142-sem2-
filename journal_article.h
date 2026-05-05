@@ -28,7 +28,7 @@ public:
      * @param rubric Рубрика статьи
      */
     JournalArticle(const std::vector<Person>& authors, const std::string& title,
-                   int year, const Journal& journal, const Rubric& rubric);
+                   const int year, const Journal& journal, const Rubric& rubric);
 
     /**
      * @brief Конструктор копирования
