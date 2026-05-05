@@ -74,7 +74,7 @@ public:
      * @brief Установить год издания
      * @param year Новый год
      */
-    void setYear(int year);
+    void setYear(const int year);
 
     /**
      * @brief Оператор вывода в поток
