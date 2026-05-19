@@ -17,7 +17,7 @@ namespace containers {
          * @brief Конструктор узла
          * @param value - значение для хранения в узле
          */
-        explicit Node(const T& value);
+        explicit Node(const T& value) : data(value), next(nullptr), prev(nullptr) {}
     };
 
 }
